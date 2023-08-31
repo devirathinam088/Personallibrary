@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let Book={
+Title:"Computer Networks",
+Author:"Saurabh Singhal",
+YearPublished:2015,
+Readstatus:5,
+book:function(){
+return "The book "+this.Title+" writtened by "+this.Author+" published in the year "+this.YearPublished;
+},
+toggr:function(){
+if(this.readstatus>0){
+    return "toggleStatus:"+true;
+}
+}
+};
+
+let Book1={
+Title:"Junior Level Books Introduction to Computer",
+Author:"Amit Garg",
+YearPublished:2011,
+Readstatus:6,
+book:function(){
+return "The book "+this.Title+" writtened by "+this.Author+" published in the year "+this.YearPublished;
+},
+toggr:function(){
+if(this.readstatus>0){
+    return "toggleStatus:"+true;
+}
+}
+};
+
+let Book2={
+Title:"Publish News Letter",
+Author:"Amit Garg",
+YearPublished:2011,
+Readstatus:0,
+book:function(){
+return "The book "+this.Title+" writtened by "+this.Author+" published in the year "+this.YearPublished;
+},
+toggr:function(){
+if(this.readstatus>0){
+    return "toggleStatus:"+true;
+}
+else{
+    return "toggleStatus:"+false;
+}
+}
+};
+console.log(Book.book()+". "+Book1.book()+". "+Book2.book());
+console.log(Book.toggr()+". "+Book1.toggr()+". "+Book2.toggr());
+
+Library=[];//empty array
+function addbook(b){
+    Library.push(b);
+}
+function addbookfront(b){
+    Library.unshift(b);
+}
+function removebook(){
+    Library.pop();
+}
+
+function removefrontbook(){
+    Library.shift();
+}
+addbook(Book);
+addbookfront(Book1);
+addbook(Book2);
+
+console.log(Library);
+
+function getallbooks(str){
+return "Book Titles: "+str[0].Title+" ,"+str[1].Title+" ,"+str[2].Title;
+}
+
+console.log(getallbooks(Library));
+function getauth(str){
+    return "Book Authors: "+str[0].Author+" ,"+str[1].Author+" ,"+str[2].Author;
+}
+console.log(getauth(Library));
+
+
+function getyear(str){
+    strd="";
+    for(let i=0;i<3;i++){
+        if(str[i].YearPublished>2000){
+       strd=strd+ str[i].Title+" is published after 2000 ";
+    }
+    if(str[i].pubyear<2000){
+        strd=strd+ str[i].Title+" is published before 2000 ";
+    }
+}return strd;
+    }
+   
+    console.log(getyear(Library));
+
+function removebytitle(str,arr){
+for(let i=0;i<arr.length;i++){
+    if(arr[i].title==str){
+     arr.splice(i,1);
+      
+    }
+}
+return arr;//this array contains removed contents
+}
+
+console.log(removebytitle("Publish News Letter",Library));
+
+function getbys(str){
+   let st=str.filter(temp=>temp.readstatus>0);
+   console.log("books with positive ReadStatus:");
+   for(let i=0;i<st.length;i++){
+    console.log(st[i].title);
+   }
+ 
+}
+getbys(Library);
+
+function getslicedlib(num,arr){
+
+arr=arr.slice(0,num);
+
+return arr;//this array contains sliced library
+}
+console.log(getslicedlib(1,Library));
+    
+    </script>
+</body>
+</html>
